@@ -36,6 +36,7 @@ The table below summarizes which [optional extras](https://github.com/microsoft/
 | `interoperability/qiskit/` | `pip install 'qdk-chemistry[qiskit-extras]'` |
 | `interoperability/openFermion/` | `pip install 'qdk-chemistry[openfermion-extras]'` |
 | `interoperability/rdkit/` | `pip install rdkit` |
+| `interoperability/alps/` | `pip install h5py`, plus an ALPS build (see its README) |
 
 To install everything needed for all examples at once:
 
@@ -110,3 +111,10 @@ The [`interoperability/openFermion`](interoperability/openFermion/) directory co
 The [`interoperability/rdkit`](interoperability/rdkit/) directory contains example programs demonstrating interoperability between QDK/Chemistry and [RDKit](https://www.rdkit.org/), including:
 
 - [`sample_rdkit_geometry.py`](interoperability/rdkit/sample_rdkit_geometry.py): Example of obtaining geometry from RDKit and calculate a simple energy with QDK/Chemistry.
+
+### ALPS
+
+The [`interoperability/alps`](interoperability/alps/) directory contains example programs demonstrating interoperability between QDK/Chemistry and [ALPS](https://github.com/ALPSim/ALPS), including:
+
+- [`qdk_alps_dmrg.py`](interoperability/alps/qdk_alps_dmrg.py): Hands a QDK molecular-orbital Hamiltonian to ALPS DMRG and returns the ground state as a matrix product state.
+- [`check_dmrg_mps.py`](interoperability/alps/check_dmrg_mps.py): Checks the DMRG energy and MPS against exact diagonalization and QDK CASCI.
