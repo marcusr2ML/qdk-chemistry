@@ -118,3 +118,5 @@ The [`interoperability/alps`](interoperability/alps/) directory contains example
 
 - [`qdk_alps_dmrg.py`](interoperability/alps/qdk_alps_dmrg.py): Hands a QDK molecular-orbital Hamiltonian to ALPS DMRG and returns the ground state as a matrix product state.
 - [`check_dmrg_mps.py`](interoperability/alps/check_dmrg_mps.py): Checks the DMRG energy and MPS against exact diagonalization and QDK CASCI.
+- [`check_mps_qpe.py`](interoperability/alps/check_mps_qpe.py): Loads the MPS into a quantum circuit and recovers the full-Hamiltonian CASCI energy with phase estimation.
+- [`TESTING_GUIDE.pdf`](interoperability/alps/TESTING_GUIDE.pdf): Step-by-step guide to building ALPS and running both checks.

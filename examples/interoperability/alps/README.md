@@ -27,12 +27,18 @@ Two-body elements over three or four distinct orbitals are **dropped** and liste
 - An ALPS `dmrg` with `SAVE_MPS` (branch `dmrg-save-mps-upstream` of [marcusr2ML/ALPS](https://github.com/marcusr2ML/ALPS)) that also includes [ALPSim/ALPS#221](https://github.com/ALPSim/ALPS/pull/221). Without #221, ALPS keeps 6 significant digits of every coupling.
 - `ALPS_BIN` pointing at the directory holding `dmrg` and `parameter2xml`, or both on `PATH`.
 - From a build tree rather than an install: `ALPS_XML_PATH=<ALPS source>/src/alps/resources`.
-- `h5py`.
+- `h5py`; `qiskit` for `check_mps_qpe.py`.
 
-## Check
+[`TESTING_GUIDE.pdf`](TESTING_GUIDE.pdf) walks through the ALPS build, the Python setup and both checks step by step, with expected output.
+
+## Checks
 
 ```bash
-ALPS_BIN=<ALPS build>/bin ALPS_XML_PATH=<ALPS source>/src/alps/resources python check_dmrg_mps.py
+export ALPS_BIN=<ALPS build>/bin ALPS_XML_PATH=<ALPS source>/src/alps/resources
+python check_dmrg_mps.py     # about 1 minute
+python check_mps_qpe.py      # about 22 minutes
 ```
 
 For a Hubbard chain and STO-3G H<sub>4</sub>, LiH, H<sub>6</sub> and H<sub>8</sub>, [`check_dmrg_mps.py`](check_dmrg_mps.py) compares the DMRG energy and the saved MPS against dense exact diagonalization and QDK CASCI of the truncated Hamiltonian, and reports the truncation error against CASCI of the full Hamiltonian.
+
+For STO-3G H<sub>4</sub> at two bond lengths, [`check_mps_qpe.py`](check_mps_qpe.py) prepares the MPS as a QDK circuit and runs iterative QPE with the full Jordan-Wigner Hamiltonian. The QPE energy matches QDK CASCI of the full Hamiltonian to within one phase bin, not the DMRG energy of the truncated one.
